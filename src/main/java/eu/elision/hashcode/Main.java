@@ -65,7 +65,7 @@ public class Main {
         for(Drone drone : DroneCommander.getDrones()) {
             int costToWarehouse = DistanceUtil.cost(potentialDelivery.getWarehouse().getX(), potentialDelivery.getWarehouse().getY(), drone.getX(), drone.getY());
             int costForDelivery = DistanceUtil.cost(potentialDelivery.getWarehouse().getX(), potentialDelivery.getWarehouse().getY(), potentialDelivery.getOrder().getX(), potentialDelivery.getOrder().getY()) + 1;
-            if(costToWarehouse > lowestCost && drone.getTurns() >= costForDelivery) {
+            if(costToWarehouse < lowestCost && drone.getTurns() >= costForDelivery) {
                 lowestCost = costToWarehouse;
                 nearestDrone = drone;
             }
