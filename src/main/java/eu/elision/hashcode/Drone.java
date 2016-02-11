@@ -83,8 +83,6 @@ public class Drone {
     }
 
     public void addCommand(Command command) {
-
-        // TODO
-
+        commands.add(command);
     }
 }

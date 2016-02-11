@@ -33,10 +33,6 @@ public class Warehouse {
         this.x = x;
     }
 
-    public int costTo(Customer customer) {
-        return DistanceUtil.cost(x, y, customer.getX(), customer.getY());
-    }
-
     public int costTo(Drone drone) {
         return DistanceUtil.cost(x, y, drone.getX(), drone.getY());
     }
