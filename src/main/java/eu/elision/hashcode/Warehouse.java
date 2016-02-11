@@ -48,4 +48,8 @@ public class Warehouse {
     public void setId(int id) {
         this.id = id;
     }
+
+    public boolean hasProduct(Product product) {
+        return products[product.getId()].getNumOfProducts() > 0;
+    }
 }
