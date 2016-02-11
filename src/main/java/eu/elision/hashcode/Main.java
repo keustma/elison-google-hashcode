@@ -11,11 +11,7 @@ public class Main {
     public static void main(String[] args) {
         DatasetUtil.readFile();
 
-        PriorityQueue<PotentialDelivery> queue = new PriorityQueue<PotentialDelivery>(400, new Comparator<PotentialDelivery>() {
-            public int compare(PotentialDelivery pd1, PotentialDelivery pd2) {
-                return Integer.compare(pd1.getCost(), pd2.getCost());
-            }
-        });
+        PriorityQueue<PotentialDelivery> queue = new PriorityQueue<PotentialDelivery>(400, (pd1, pd2) -> Integer.compare(pd1.getCost(), pd2.getCost()));
 
         for(Order order : OrderUtil.getOrders()) {
             for(Product product : order.getProducts()) {
@@ -41,17 +37,18 @@ public class Main {
             }
 
             // calculate how many products drone still can carry of product type
+            int amountNeeded = potentialDelivery.getOrder().getAmountNeeded(potentialDelivery.getProduct());
+            int amountAvailable = potentialDelivery.getWarehouse().getAmountAvailable(potentialDelivery.getProduct());
+            int amountWantingToTransport = Math.min(amountNeeded, amountAvailable);
 
-            // get max product of type from ware
+            Drone d = selectDrone(potentialDelivery);
 
-            // calc min of both
+            int amountAbleToTransport = d.getAmountAbleToTransport(potentialDelivery.getProduct());
 
-            Drone d = selectDrone();
+            int amountToTransport = Math.min(amountAbleToTransport, amountWantingToTransport);
 
-            Load load = new Load(d, potentialDelivery.getWarehouse(), potentialDelivery.getProduct(), 9999); // TODO 9999 veranderen
-
-
-            Unload unload = new Unload(d, );
+            Load load = new Load(d, potentialDelivery.getWarehouse(), potentialDelivery.getProduct(), amountToTransport);
+            Unload unload = new Unload(d, potentialDelivery.getOrder(), potentialDelivery.getProduct(), amountAbleToTransport);
 
             d.addCommand(load);
             d.addCommand(unload);
@@ -59,7 +56,17 @@ public class Main {
         }
     }
 
-    public static Drone selectDrone() {
-        return null; // TODO
+    public static Drone selectDrone(PotentialDelivery potentialDelivery) {
+        Drone nearestDrone = null;
+        int lowestCost = Integer.MAX_VALUE;
+        for(Drone drone : DroneCommander.getDrones()) {
+            int costToWarehouse = DistanceUtil.cost(potentialDelivery.getWarehouse().getX(), potentialDelivery.getWarehouse().getY(), drone.getX(), drone.getY());
+            int costForDelivery = DistanceUtil.cost(potentialDelivery.getWarehouse().getX(), potentialDelivery.getWarehouse().getY(), potentialDelivery.getOrder().getX(), potentialDelivery.getOrder().getY()) + 1;
+            if(costToWarehouse < lowestCost && drone.getTurns() >= costForDelivery) {
+                lowestCost = costToWarehouse;
+                nearestDrone = drone;
+            }
+        }
+        return nearestDrone;
     }
 }

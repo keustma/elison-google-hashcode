@@ -48,4 +48,9 @@ public class Warehouse {
     public boolean hasProduct(Product product) {
         return products[product.getId()].getNumOfProducts() > 0;
     }
+
+    public int getAmountAvailable(Product product) {
+        return products[product.getId()].getAmount();
+    }
+
 }

@@ -10,8 +10,6 @@ import java.util.Map;
 public class Drone {
 
     private int turns;
-    private int maxLoad;
-
     private int currentWeight;
 
     private Map<Product, Integer> loadedProducts = new HashMap<Product, Integer>();
@@ -21,9 +19,8 @@ public class Drone {
     private int id;
     private List<Command> commands;
 
-    public Drone(int turns, int maxLoad) {
+    public Drone(int turns) {
         this.turns = turns;
-        this.maxLoad = maxLoad;
     }
 
     public void decreaseTurns(int decreaseAmount) throws Exception {
@@ -92,5 +89,13 @@ public class Drone {
 
     public void addCommand(Command command) {
         commands.add(command);
+    }
+
+    public int getTurns() {
+        return turns;
+    }
+
+    public int getAmountAbleToTransport(Product product) {
+        return (DatasetUtil.getMaximumDroneWeight() - currentWeight) / product.getWeight();
     }
 }
