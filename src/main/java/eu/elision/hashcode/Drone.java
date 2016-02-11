@@ -1,44 +1,36 @@
 package eu.elision.hashcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Drone {
 
-    private int productType;
-    private int numProducts;
+    private int currentWeight;
+
+    private Map<Product, Integer> loadedProducts = new HashMap<Product, Integer>();
+
     private int positionX;
     private int positionY;
 
-    public void load() {
+    public void load(Product product, int amount) {
+        if (currentWeight + amount * product.getWeight() > DatasetUtil.getMaximumDroneWeight()) {
+            throw new IllegalArgumentException();
+        }
 
+        Integer currentAmount = this.loadedProducts.get(product);
+        this.loadedProducts.put(product, currentAmount + amount);
     }
 
-    public void deliver() {
+    public void unload(Product product, int amount) {
+        Integer currentAmount = this.loadedProducts.get(product);
 
+        if (currentAmount > amount) {
+            throw new IllegalArgumentException();
+        }
+
+        this.loadedProducts.put(product, currentAmount - amount);
     }
 
-    public void unload() {
-
-
-    }
-
-    public void waitTurns() {
-
-    }
-
-    public int getProductType() {
-        return productType;
-    }
-
-    public void setProductType(int productType) {
-        this.productType = productType;
-    }
-
-    public int getNumProducts() {
-        return numProducts;
-    }
-
-    public void setNumProducts(int numProducts) {
-        this.numProducts = numProducts;
-    }
 
     public int getPositionX() {
         return positionX;
