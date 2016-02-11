@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class DatasetUtil {
 
+
     public static void readFile() {
         File file = new File("busy_day.in");
 
@@ -27,16 +28,24 @@ public class DatasetUtil {
                     productWeights[i] = Integer.parseInt(items[i]);
             }
             int wareHouses = Integer.parseInt(scanner.nextLine());
+
+            WarehouseUtil.initWarehouses(wareHouses);
+
             int[][] wareHouseCoordinates = new int[wareHouses][];
             int[][] productsInWareHouses = new int[wareHouses][];
             for(int i = 0; i < wareHouses; i++) {
                 String[] coords = scanner.nextLine().split(" ");
                 int[] coordinates = new int[] {Integer.parseInt(coords[0]), Integer.parseInt(coords[1])};
+
+                WarehouseUtil.getWarehouse(i).setLocation(coordinates[0], coordinates[1]);
+
                 wareHouseCoordinates[i] = coordinates;
                 String[] amntOfProducts = scanner.nextLine().split(" ");
                 int[] amountOfProductsPerType = new int[amntOfProducts.length];
                 for(int product = 0; product < amntOfProducts.length; product++) {
                     amountOfProductsPerType[product] = Integer.parseInt(amntOfProducts[product]);
+
+                    WarehouseUtil.getWarehouse(i).addProducts(product, Integer.parseInt(amntOfProducts[product]));
                 }
                 productsInWareHouses[i] = amountOfProductsPerType;
 

@@ -7,7 +7,7 @@ public class WarehouseUtil {
 
     public static List<Warehouse> warehouses;
 
-    public void initWarehouses(int numOfWarehouses) {
+    public static void initWarehouses(int numOfWarehouses) {
         warehouses = new ArrayList<>();
 
         for(int i = 0; i < numOfWarehouses; i++) {
@@ -15,7 +15,7 @@ public class WarehouseUtil {
         }
     }
 
-    public Warehouse getWarehouse(int warehouseId) {
+    public static Warehouse getWarehouse(int warehouseId) {
         return warehouses.get(warehouseId);
     }
 }
