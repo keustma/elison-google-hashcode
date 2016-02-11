@@ -8,6 +8,6 @@ public class MainTest {
 
     @Test
     public void testMain() throws Exception {
-        Main.main(null);
+        DatasetUtil.readFile();
     }
 }
