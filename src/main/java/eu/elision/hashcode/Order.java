@@ -26,4 +26,8 @@ public class Order {
     public List<Product> getProducts() {
         return this.products;
     }
+
+    public boolean needsProduct(Product product) {
+        return false;
+    }
 }

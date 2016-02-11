@@ -1,5 +1,7 @@
 package eu.elision.hashcode;
 
+import eu.elision.hashcode.command.Load;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
@@ -20,12 +22,36 @@ public class Main {
                     if(warehouse.hasProduct(product)) {
                         int cost = order.costTo(warehouse);
 
-                        queue.add(new PotentialDelivery(cost, order, warehouse));
+                        queue.add(new PotentialDelivery(cost, order, warehouse, product));
                     }
                 }
             }
         }
 
         // process queue
+        PotentialDelivery potentialDelivery;
+        while((potentialDelivery = queue.poll()) != null) {
+            if(! potentialDelivery.getOrder().needsProduct(potentialDelivery.getProduct())) {
+                continue;
+            }
+
+            if(! potentialDelivery.getWarehouse().hasProduct(potentialDelivery.getProduct())) {
+                continue;
+            }
+
+            // calculate how many products drone still can carry of product type
+
+            // get max product of type from ware
+
+            // calc min of both
+
+            Drone d = selectDrone();
+
+            Load load = new Load(d, potentialDelivery.getWarehouse(), potentialDelivery.getProduct(), 9999); // TODO 9999 veranderen
+        }
+    }
+
+    public static Drone selectDrone() {
+        return null; // TODO
     }
 }

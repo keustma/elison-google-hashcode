@@ -10,8 +10,6 @@ public class Unload implements Command {
     private final Warehouse warehouse;
     private final Product product;
     private final int amountProducts;
-private int test;
-
 
     public Unload(Drone drone, Warehouse warehouse, Product product, int amountProducts) {
         this.drone = drone;

@@ -1,5 +1,7 @@
 package eu.elision.hashcode;
 
+import eu.elision.hashcode.command.Command;
+
 import java.util.ArrayList;
 import java.util.List;
 
