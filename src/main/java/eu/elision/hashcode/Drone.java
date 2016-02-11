@@ -87,4 +87,8 @@ public class Drone {
         // TODO
 
     }
+
+    public int getTurns() {
+        return turns;
+    }
 }

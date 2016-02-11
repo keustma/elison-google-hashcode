@@ -39,4 +39,12 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

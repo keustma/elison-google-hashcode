@@ -19,4 +19,8 @@ public class DroneCommander {
     public static void command(int drone, Command command, int warehouse, int productType, int numProducts) {
 
     }
+
+    public static List<Drone> getDrones() {
+        return drones;
+    }
 }

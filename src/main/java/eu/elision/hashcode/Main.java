@@ -46,12 +46,12 @@ public class Main {
 
             // calc min of both
 
-            Drone d = selectDrone();
+            Drone d = selectDrone(potentialDelivery);
 
             Load load = new Load(d, potentialDelivery.getWarehouse(), potentialDelivery.getProduct(), 9999); // TODO 9999 veranderen
 
 
-            Unload unload = new Unload(d, );
+            Unload unload = new Unload(d, potentialDelivery.getOrder(), potentialDelivery.getProduct(), 9999);
 
             d.addCommand(load);
             d.addCommand(unload);
@@ -59,7 +59,17 @@ public class Main {
         }
     }
 
-    public static Drone selectDrone() {
-        return null; // TODO
+    public static Drone selectDrone(PotentialDelivery potentialDelivery) {
+        Drone nearestDrone = null;
+        int lowestCost = Integer.MAX_VALUE;
+        for(Drone drone : DroneCommander.getDrones()) {
+            int costToWarehouse = DistanceUtil.cost(potentialDelivery.getWarehouse().getX(), potentialDelivery.getWarehouse().getY(), drone.getX(), drone.getY());
+            int costForDelivery = DistanceUtil.cost(potentialDelivery.getWarehouse().getX(), potentialDelivery.getWarehouse().getY(), potentialDelivery.getOrder().getX(), potentialDelivery.getOrder().getY()) + 1;
+            if(costToWarehouse > lowestCost && drone.getTurns() >= costForDelivery) {
+                lowestCost = costToWarehouse;
+                nearestDrone = drone;
+            }
+        }
+        return nearestDrone;
     }
 }
