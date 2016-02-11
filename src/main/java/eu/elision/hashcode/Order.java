@@ -1,14 +1,19 @@
 package eu.elision.hashcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+
+import static java.lang.Integer.valueOf;
 
 public class Order {
 
     private int x;
     private int y;
 
-    private List<Product> products = new ArrayList<Product>();
+    private Product[] products = new Product[DatasetUtil.getTotalAmountProducts()];
     private int id;
 
     public void setLocation(int x, int y) {
@@ -17,7 +22,7 @@ public class Order {
     }
 
     public void addProduct(Product product) {
-        products.add(product);
+        products[product.getId()] = product;
     }
 
     public int costTo(Warehouse warehouse) {
@@ -25,11 +30,11 @@ public class Order {
     }
 
     public List<Product> getProducts() {
-        return this.products;
+        return Arrays.asList(products);
     }
 
     public boolean needsProduct(Product product) {
-        return false;
+        return products[product.getId()].getAmount() != 0;
     }
 
     public int getId() {
@@ -46,5 +51,9 @@ public class Order {
 
     public int getY() {
         return y;
+    }
+
+    public int getAmountNeeded(Product product) {
+        return products[product.getId()].getAmount();
     }
 }

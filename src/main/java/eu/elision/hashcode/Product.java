@@ -5,6 +5,7 @@ public class Product {
     private int numOfProducts;
     private int weight;
     private int id;
+    private int amount;
 
     public Product() {
 
@@ -37,5 +38,13 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setAmount(int amount) {
+        this.numOfProducts = amount;
+    }
+
+    public int getAmount() {
+        return numOfProducts;
     }
 }
