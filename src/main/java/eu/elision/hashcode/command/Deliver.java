@@ -4,7 +4,7 @@ import eu.elision.hashcode.Drone;
 import eu.elision.hashcode.Product;
 import eu.elision.hashcode.Warehouse;
 
-public class Deliver {
+public class Deliver implements Command {
 
     private final Drone drone;
     private final Warehouse warehouse;
@@ -18,7 +18,8 @@ public class Deliver {
         this.amountProducts = amountProducts;
     }
 
-    private String output() {
+    @Override
+    public String output() {
         int droneId = drone.getId();
         int warehouseId = warehouse.getId();
         int productId = product.getId();

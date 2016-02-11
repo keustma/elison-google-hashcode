@@ -1,6 +1,9 @@
 package eu.elision.hashcode;
 
+import eu.elision.hashcode.command.Command;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Drone {
@@ -15,6 +18,7 @@ public class Drone {
     private int x;
     private int y;
     private int id;
+    private List<Command> commands;
 
     public Drone(int turns, int maxLoad) {
         this.turns = turns;
@@ -67,5 +71,13 @@ public class Drone {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public List<Command> getCommands() {
+        return commands;
+    }
+
+    public void setCommands(List<Command> commands) {
+        this.commands = commands;
     }
 }

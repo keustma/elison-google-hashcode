@@ -2,7 +2,7 @@ package eu.elision.hashcode.command;
 
 import eu.elision.hashcode.Drone;
 
-public class Wait {
+public class Wait implements Command {
 
     private final Drone drone;
     private final int turns;
@@ -12,6 +12,7 @@ public class Wait {
         this.turns = turns;
     }
 
+    @Override
     public String output() {
         return String.format("%s W %s", drone.getId(), turns);
     }
