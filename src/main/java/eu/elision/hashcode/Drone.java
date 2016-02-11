@@ -87,8 +87,9 @@ public class Drone {
         this.commands = commands;
     }
 
-    public void addCommand(Command command) {
+    public void addCommand(Command command) throws Exception {
         commands.add(command);
+        command.execute();
     }
 
     public int getTurns() {

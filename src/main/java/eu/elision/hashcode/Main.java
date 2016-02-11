@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         DatasetUtil.readFile();
 
         PriorityQueue<PotentialDelivery> queue = new PriorityQueue<PotentialDelivery>(400, (pd1, pd2) -> Integer.compare(pd1.getCost(), pd2.getCost()));
