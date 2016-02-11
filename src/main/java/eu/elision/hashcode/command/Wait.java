@@ -16,4 +16,9 @@ public class Wait implements Command {
     public String output() {
         return String.format("%s W %s", drone.getId(), turns);
     }
+
+    @Override
+    public void execute() throws Exception {
+        drone.decreaseTurns(turns);
+    }
 }

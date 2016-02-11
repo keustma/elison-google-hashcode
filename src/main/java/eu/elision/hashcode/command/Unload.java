@@ -27,4 +27,11 @@ public class Unload implements Command {
 
         return String.format("%s U %s %s %s", droneId, orderId, productId, amountProducts);
     }
+
+    @Override
+    public void execute() throws Exception {
+        // turns van drone - (steps + 1 van load)
+        int cost = drone.costTo(warehouse) + 1;
+        drone.decreaseTurns(cost);
+    }
 }

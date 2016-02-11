@@ -26,6 +26,14 @@ public class Drone {
         this.maxLoad = maxLoad;
     }
 
+    public void decreaseTurns(int decreaseAmount) throws Exception {
+        this.turns -= decreaseAmount;
+
+        if(this.turns < 0) {
+            throw new Exception("Negative turns on drone!");
+        }
+    }
+
     public void load(Product product, int amount) {
         if (currentWeight + amount * product.getWeight() > DatasetUtil.getMaximumDroneWeight()) {
             throw new IllegalArgumentException();

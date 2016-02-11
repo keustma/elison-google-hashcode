@@ -26,4 +26,12 @@ public class Load implements Command {
 
         return String.format("%s L %s %s %s", droneId, warehouseId, productId, amountProducts);
     }
+
+    @Override
+    public void execute() throws Exception {
+        // turns van drone - (steps + 1 van load)
+        int cost = drone.costTo(warehouse) + 1;
+        drone.decreaseTurns(cost);
+    }
+
 }
