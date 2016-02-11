@@ -9,8 +9,8 @@ public class Drone {
 
     private Map<Product, Integer> loadedProducts = new HashMap<Product, Integer>();
 
-    private int positionX;
-    private int positionY;
+    private int x;
+    private int y;
 
     public void load(Product product, int amount) {
         if (currentWeight + amount * product.getWeight() > DatasetUtil.getMaximumDroneWeight()) {
@@ -31,20 +31,24 @@ public class Drone {
         this.loadedProducts.put(product, currentAmount - amount);
     }
 
-
-    public int getPositionX() {
-        return positionX;
+    public int costTo(Warehouse warehouse) {
+        return DistanceUtil.cost(x, y, warehouse.getX(), warehouse.getY());
     }
 
-    public void setPositionX(int positionX) {
-        this.positionX = positionX;
+
+    public int getX() {
+        return x;
     }
 
-    public int getPositionY() {
-        return positionY;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public void setPositionY(int positionY) {
-        this.positionY = positionY;
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }
