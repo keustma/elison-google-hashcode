@@ -11,7 +11,7 @@ public class WarehouseUtil {
         warehouses = new ArrayList<Warehouse>();
 
         for(int i = 0; i < numOfWarehouses; i++) {
-            warehouses.add(i, new Warehouse());
+            warehouses.add(i, new Warehouse(i));
         }
     }
 

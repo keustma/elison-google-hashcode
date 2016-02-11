@@ -11,6 +11,7 @@ public class PotentialDelivery {
         this.cost = cost;
         this.order = order;
         this.warehouse = warehouse;
+        this.product = product;
     }
 
     public int getCost() {

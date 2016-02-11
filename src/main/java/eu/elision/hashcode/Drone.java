@@ -3,6 +3,7 @@ package eu.elision.hashcode;
 import eu.elision.hashcode.command.Command;
 import eu.elision.hashcode.command.Unload;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,9 +18,10 @@ public class Drone {
     private int x;
     private int y;
     private int id;
-    private List<Command> commands;
+    private List<Command> commands = new ArrayList<Command>();
 
-    public Drone(int turns) {
+    public Drone(int id, int turns) {
+        this.id = id;
         this.turns = turns;
     }
 
@@ -37,6 +39,11 @@ public class Drone {
         }
 
         Integer currentAmount = this.loadedProducts.get(product);
+
+        if(currentAmount == null) {
+            currentAmount = 0;
+        }
+
         this.loadedProducts.put(product, currentAmount + amount);
     }
 

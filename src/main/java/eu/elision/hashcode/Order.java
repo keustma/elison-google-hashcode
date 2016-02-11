@@ -16,6 +16,9 @@ public class Order {
     private Product[] products = new Product[DatasetUtil.getTotalAmountProducts()];
     private int id;
 
+    public Order(int i) {
+        this.id = i;
+    }
     public void setLocation(int x, int y) {
         this.x = x;
         this.y = y;
@@ -30,6 +33,7 @@ public class Order {
     }
 
     public List<Product> getProducts() {
+
         return Arrays.asList(products);
     }
 

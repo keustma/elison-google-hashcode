@@ -10,7 +10,7 @@ public class OrderUtil {
     public static void initOrders(int numOfOrders) {
 
         for(int i = 0; i < numOfOrders; i++) {
-            orders.add(new Order());
+            orders.add(new Order(i));
         }
     }
 

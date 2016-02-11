@@ -12,10 +12,11 @@ import java.util.Collection;
 public class OutputWriter {
 
     public static void writeFile(Collection<Drone> drones) throws IOException {
-        File file = new File("C:\\googlehashcode.out");
+        File file = new File("googlehashcode.out");
 
         try (PrintWriter out = new PrintWriter(new FileWriter(file))) {
-            out.println(drones.size());
+            int sum = drones.stream().mapToInt(d -> d.getCommands().size()).sum();
+            out.println(sum);
             
             for (Drone drone : drones) {
                 for (Command comm : drone.getCommands()) {

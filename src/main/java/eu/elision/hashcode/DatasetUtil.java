@@ -9,7 +9,7 @@ public class DatasetUtil {
     private static int totalAmountProducts;
 
     public static void readFile() {
-        File file = new File("busy_day.in");
+        File file = new File("redundancy.in");
 
         try {
 
@@ -26,7 +26,7 @@ public class DatasetUtil {
             maximumDroneWeight = maxWeightDrone;
             totalAmountProducts = differentProductsInWarehouses;
 
-            DroneCommander.initDrones(drones, deadline, maxWeightDrone);
+            DroneCommander.initDrones(drones, deadline / drones, maxWeightDrone);
 
             String[] items = scanner.nextLine().split(" ");
             int[] productWeights = new int[items.length];

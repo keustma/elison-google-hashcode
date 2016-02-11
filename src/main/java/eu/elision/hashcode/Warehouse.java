@@ -8,6 +8,10 @@ public class Warehouse {
     private int y;
     private int id;
 
+    public Warehouse(int id) {
+        this.id = id;
+    }
+
     public void setLocation(int x, int y) {
         this.x = x;
         this.y = y;
