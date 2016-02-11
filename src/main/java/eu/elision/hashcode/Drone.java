@@ -98,4 +98,8 @@ public class Drone {
     public int getAmountAbleToTransport(Product product) {
         return (DatasetUtil.getMaximumDroneWeight() - currentWeight) / product.getWeight();
     }
+
+    public int costTo(Order order) {
+        return DistanceUtil.cost(x, y, order.getX(), order.getY());
+    }
 }

@@ -1,5 +1,6 @@
 package eu.elision.hashcode;
 
+import eu.elision.hashcode.command.Deliver;
 import eu.elision.hashcode.command.Load;
 import eu.elision.hashcode.command.Unload;
 
@@ -48,10 +49,10 @@ public class Main {
             int amountToTransport = Math.min(amountAbleToTransport, amountWantingToTransport);
 
             Load load = new Load(d, potentialDelivery.getWarehouse(), potentialDelivery.getProduct(), amountToTransport);
-            Unload unload = new Unload(d, potentialDelivery.getOrder(), potentialDelivery.getProduct(), amountAbleToTransport);
+            Deliver deliver = new Deliver(d, potentialDelivery.getOrder(), potentialDelivery.getProduct(), amountAbleToTransport);
 
             d.addCommand(load);
-            d.addCommand(unload);
+            d.addCommand(deliver);
 
         }
     }

@@ -53,4 +53,7 @@ public class Warehouse {
         return products[product.getId()].getAmount();
     }
 
+    public void remove(Product product, int amountProducts) {
+        products[product.getId()].setAmount(products[product.getId()].getNumOfProducts() - amountProducts);
+    }
 }

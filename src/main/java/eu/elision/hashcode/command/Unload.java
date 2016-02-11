@@ -30,8 +30,7 @@ public class Unload implements Command {
 
     @Override
     public void execute() throws Exception {
-        // turns van drone - (steps + 1 van load)
-        int cost = drone.costTo(warehouse) + 1;
-        drone.decreaseTurns(cost);
+
     }
+
 }
