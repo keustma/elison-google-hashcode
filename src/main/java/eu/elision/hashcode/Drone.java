@@ -14,6 +14,7 @@ public class Drone {
 
     private int x;
     private int y;
+    private int id;
 
     public Drone(int turns, int maxLoad) {
         this.turns = turns;
@@ -58,5 +59,13 @@ public class Drone {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

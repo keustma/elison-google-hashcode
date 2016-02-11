@@ -6,6 +6,7 @@ public class Warehouse {
 
     private int x;
     private int y;
+    private int id;
 
     public void setLocation(int x, int y) {
         this.x = x;
@@ -38,5 +39,13 @@ public class Warehouse {
 
     public int costTo(Drone drone) {
         return DistanceUtil.cost(x, y, drone.getX(), drone.getY());
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

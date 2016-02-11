@@ -4,6 +4,7 @@ public class Product {
 
     private int numOfProducts;
     private int weight;
+    private int id;
 
     public Product(int numOfProds) {
         this.numOfProducts = numOfProds;
@@ -24,5 +25,13 @@ public class Product {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
