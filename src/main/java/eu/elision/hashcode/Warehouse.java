@@ -6,7 +6,7 @@ public class Warehouse {
 
     private int x;
     private int y;
-    
+
     public void setLocation(int x, int y) {
         this.x = x;
         this.y = y;
