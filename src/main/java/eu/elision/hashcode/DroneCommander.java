@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DroneCommander {
 
-    private static List<Drone> drones = new ArrayList<>();
+    private static List<Drone> drones = new ArrayList<Drone>();
 
     public static void initDrones(int numOfDrones, int turns, int maxLoad) {
 

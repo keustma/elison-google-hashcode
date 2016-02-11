@@ -76,7 +76,12 @@ public class DatasetUtil {
                 for(int differentProdTypes = 0; differentProdTypes < prodTypes.length; differentProdTypes++) {
                     productTypes[differentProdTypes] = Integer.parseInt(prodTypes[differentProdTypes]);
 
-                    OrderUtil.getOrder(i).addProduct(Integer.parseInt(prodTypes[differentProdTypes]));
+                    Product prod = new Product();
+                    prod.setId(differentProdTypes);
+                    prod.setNumOfProducts(Integer.parseInt(prodTypes[differentProdTypes]));
+                    prod.setWeight(productWeights[differentProdTypes]);
+
+                    OrderUtil.getOrder(i).addProduct(prod);
                 }
                 productTypesForDelivery[i] = productTypes;
 

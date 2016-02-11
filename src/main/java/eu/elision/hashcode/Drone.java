@@ -10,7 +10,7 @@ public class Drone {
 
     private int currentWeight;
 
-    private Map<Product, Integer> loadedProducts = new HashMap<>();
+    private Map<Product, Integer> loadedProducts = new HashMap<Product, Integer>();
 
     private int x;
     private int y;

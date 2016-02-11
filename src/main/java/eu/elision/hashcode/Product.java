@@ -6,6 +6,10 @@ public class Product {
     private int weight;
     private int id;
 
+    public Product() {
+
+    }
+
     public Product(int numOfProds) {
         this.numOfProducts = numOfProds;
     }
