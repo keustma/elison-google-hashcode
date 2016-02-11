@@ -1,12 +1,12 @@
 package eu.elision.hashcode;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class DatasetUtil {
 
+    private static int maximumDroneWeight;
+    private static int totalAmountProducts;
 
     public static void readFile() {
         File file = new File("busy_day.in");
@@ -22,6 +22,9 @@ public class DatasetUtil {
             int deadline = Integer.parseInt(simulationConfiguration[3]);
             int maxWeightDrone = Integer.parseInt(simulationConfiguration[4]);
             int differentProductsInWarehouses = Integer.parseInt(scanner.nextLine());
+
+            DroneCommander.initDrones(drones, deadline, maxWeightDrone);
+
             String[] items = scanner.nextLine().split(" ");
             int[] productWeights = new int[items.length];
             for (int i = 0; i < items.length; i++) {
@@ -76,6 +79,10 @@ public class DatasetUtil {
     }
 
     public static int getTotalAmountProducts() {
-        return 1000;
+        return totalAmountProducts;
+    }
+
+    public static int getMaximumDroneWeight() {
+        return maximumDroneWeight;
     }
 }

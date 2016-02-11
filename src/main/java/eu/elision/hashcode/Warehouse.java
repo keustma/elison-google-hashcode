@@ -15,4 +15,28 @@ public class Warehouse {
     public void addProducts(int productNr, int numOfProds) {
         products[productNr] = new Product(numOfProds);
     }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int costTo(Customer customer) {
+        return DistanceUtil.cost(x, y, customer.getX(), customer.getY());
+    }
+
+    public int costTo(Drone drone) {
+        return DistanceUtil.cost(x, y, drone.getX(), drone.getY());
+    }
 }

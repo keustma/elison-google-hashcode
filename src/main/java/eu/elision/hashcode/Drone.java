@@ -1,58 +1,62 @@
 package eu.elision.hashcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Drone {
 
-    private int productType;
-    private int numProducts;
-    private int positionX;
-    private int positionY;
+    private int turns;
+    private int maxLoad;
 
-    public void load() {
+    private int currentWeight;
 
+    private Map<Product, Integer> loadedProducts = new HashMap<>();
+
+    private int x;
+    private int y;
+
+    public Drone(int turns, int maxLoad) {
+        this.turns = turns;
+        this.maxLoad = maxLoad;
     }
 
-    public void deliver() {
+    public void load(Product product, int amount) {
+        if (currentWeight + amount * product.getWeight() > DatasetUtil.getMaximumDroneWeight()) {
+            throw new IllegalArgumentException();
+        }
 
+        Integer currentAmount = this.loadedProducts.get(product);
+        this.loadedProducts.put(product, currentAmount + amount);
     }
 
-    public void unload() {
+    public void unload(Product product, int amount) {
+        Integer currentAmount = this.loadedProducts.get(product);
 
+        if (currentAmount > amount) {
+            throw new IllegalArgumentException();
+        }
 
+        this.loadedProducts.put(product, currentAmount - amount);
     }
 
-    public void waitTurns() {
-
+    public int costTo(Warehouse warehouse) {
+        return DistanceUtil.cost(x, y, warehouse.getX(), warehouse.getY());
     }
 
-    public int getProductType() {
-        return productType;
+
+    public int getX() {
+        return x;
     }
 
-    public void setProductType(int productType) {
-        this.productType = productType;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public int getNumProducts() {
-        return numProducts;
+    public int getY() {
+        return y;
     }
 
-    public void setNumProducts(int numProducts) {
-        this.numProducts = numProducts;
-    }
-
-    public int getPositionX() {
-        return positionX;
-    }
-
-    public void setPositionX(int positionX) {
-        this.positionX = positionX;
-    }
-
-    public int getPositionY() {
-        return positionY;
-    }
-
-    public void setPositionY(int positionY) {
-        this.positionY = positionY;
+    public void setY(int y) {
+        this.y = y;
     }
 }
