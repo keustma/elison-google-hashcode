@@ -45,6 +45,8 @@ public class Drone {
         }
 
         this.loadedProducts.put(product, currentAmount + amount);
+
+        this.currentWeight += product.getWeight() * amount;
     }
 
     public void unload(Product product, int amount) {
@@ -55,6 +57,8 @@ public class Drone {
         }
 
         this.loadedProducts.put(product, currentAmount - amount);
+
+        this.currentWeight -= product.getWeight() * amount;
     }
 
     public int costTo(Warehouse warehouse) {
