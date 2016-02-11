@@ -1,19 +1,20 @@
 package eu.elision.hashcode.command;
 
 import eu.elision.hashcode.Drone;
+import eu.elision.hashcode.Order;
 import eu.elision.hashcode.Product;
 import eu.elision.hashcode.Warehouse;
 
 public class Unload implements Command {
 
     private final Drone drone;
-    private final Warehouse warehouse;
+    private final Order order;
     private final Product product;
     private final int amountProducts;
 
-    public Unload(Drone drone, Warehouse warehouse, Product product, int amountProducts) {
+    public Unload(Drone drone, Order order, Product product, int amountProducts) {
         this.drone = drone;
-        this.warehouse = warehouse;
+        this.order = order;
         this.product = product;
         this.amountProducts = amountProducts;
     }
@@ -21,9 +22,9 @@ public class Unload implements Command {
     @Override
     public String output() {
         int droneId = drone.getId();
-        int warehouseId = warehouse.getId();
+        int orderId = order.getId();
         int productId = product.getId();
 
-        return String.format("%s U %s %s %s", droneId, warehouseId, productId, amountProducts);
+        return String.format("%s U %s %s %s", droneId, orderId, productId, amountProducts);
     }
 }

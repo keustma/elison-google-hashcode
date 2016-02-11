@@ -9,6 +9,7 @@ public class Order {
     private int y;
 
     private List<Product> products = new ArrayList<Product>();
+    private int id;
 
     public void setLocation(int x, int y) {
         this.x = x;
@@ -29,5 +30,13 @@ public class Order {
 
     public boolean needsProduct(Product product) {
         return false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

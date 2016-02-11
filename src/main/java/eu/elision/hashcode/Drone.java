@@ -1,6 +1,7 @@
 package eu.elision.hashcode;
 
 import eu.elision.hashcode.command.Command;
+import eu.elision.hashcode.command.Unload;
 
 import java.util.HashMap;
 import java.util.List;
@@ -79,5 +80,11 @@ public class Drone {
 
     public void setCommands(List<Command> commands) {
         this.commands = commands;
+    }
+
+    public void addCommand(Command command) {
+
+        // TODO
+
     }
 }

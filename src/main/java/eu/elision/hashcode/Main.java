@@ -1,6 +1,7 @@
 package eu.elision.hashcode;
 
 import eu.elision.hashcode.command.Load;
+import eu.elision.hashcode.command.Unload;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -48,6 +49,13 @@ public class Main {
             Drone d = selectDrone();
 
             Load load = new Load(d, potentialDelivery.getWarehouse(), potentialDelivery.getProduct(), 9999); // TODO 9999 veranderen
+
+
+            Unload unload = new Unload(d, );
+
+            d.addCommand(load);
+            d.addCommand(unload);
+
         }
     }
 
