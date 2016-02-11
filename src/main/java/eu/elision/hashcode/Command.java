@@ -3,6 +3,8 @@ package eu.elision.hashcode;
 public enum Command {
 
     LOAD,
-    UNLOAD
+    UNLOAD,
+    DELIVER,
+    WAIT
 
 }
