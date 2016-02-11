@@ -23,6 +23,9 @@ public class DatasetUtil {
             int maxWeightDrone = Integer.parseInt(simulationConfiguration[4]);
             int differentProductsInWarehouses = Integer.parseInt(scanner.nextLine());
 
+            maximumDroneWeight = maxWeightDrone;
+            totalAmountProducts = differentProductsInWarehouses;
+
             DroneCommander.initDrones(drones, deadline, maxWeightDrone);
 
             String[] items = scanner.nextLine().split(" ");
@@ -51,11 +54,12 @@ public class DatasetUtil {
                     WarehouseUtil.getWarehouse(i).addProducts(product, Integer.parseInt(amntOfProducts[product]));
                 }
                 productsInWareHouses[i] = amountOfProductsPerType;
-
             }
 
-
             int orders = Integer.parseInt(scanner.nextLine());
+
+            OrderUtil.initOrders(orders);
+
             int [][] deliveryCoordinates = new int[orders][];
             int [] amountOfProductsForDelivery = new int[orders];
             int [][] productTypesForDelivery = new int[orders][];
@@ -63,13 +67,21 @@ public class DatasetUtil {
                 String[] coords = scanner.nextLine().split(" ");
                 int[] deliveryCoords = new int[] {Integer.parseInt(coords[0]), Integer.parseInt(coords[1])};
                 deliveryCoordinates[i] = deliveryCoords;
+
+                OrderUtil.getOrder(i).setLocation(deliveryCoords[0], deliveryCoords[1]);
+
                 amountOfProductsForDelivery[i] = Integer.parseInt(scanner.nextLine());
                 String[] prodTypes = scanner.nextLine().split(" ");
                 int[] productTypes = new int[prodTypes.length];
                 for(int differentProdTypes = 0; differentProdTypes < prodTypes.length; differentProdTypes++) {
                     productTypes[differentProdTypes] = Integer.parseInt(prodTypes[differentProdTypes]);
+
+                    OrderUtil.getOrder(i).addProduct(Integer.parseInt(prodTypes[differentProdTypes]));
                 }
                 productTypesForDelivery[i] = productTypes;
+
+
+
 
             }
             scanner.close();

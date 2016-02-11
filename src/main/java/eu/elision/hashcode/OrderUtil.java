@@ -5,16 +5,16 @@ import java.util.List;
 
 public class OrderUtil {
 
-    private List<Order> orders = new ArrayList<>();
+    private static List<Order> orders = new ArrayList<>();
 
-    public void initOrders(int numOfOrders) {
+    public static void initOrders(int numOfOrders) {
 
         for(int i = 0; i < numOfOrders; i++) {
             orders.add(new Order());
         }
     }
 
-    public Order getOrder(int orderIndex) {
+    public static Order getOrder(int orderIndex) {
         return orders.get(orderIndex);
     }
 }
