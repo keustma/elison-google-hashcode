@@ -9,7 +9,7 @@ public class DatasetUtil {
     private static int totalAmountProducts;
 
     public static void readFile() {
-        File file = new File("redundancy.in");
+        File file = new File("busy_day.in");
 
         try {
 

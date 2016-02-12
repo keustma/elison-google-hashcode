@@ -13,17 +13,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
         DatasetUtil.readFile();
 
-        PriorityQueue<PotentialDelivery> queue = new PriorityQueue<PotentialDelivery>(400, (pd1, pd2) -> Integer.compare(pd1.getCost(), pd2.getCost()));
+        PriorityQueue<PotentialDelivery> queue = new PriorityQueue<>(400, (pd1, pd2) -> Integer.compare(pd1.getCost(), pd2.getCost()));
 
         for(Order order : OrderUtil.getOrders()) {
             for(Product product : order.getProducts()) {
-                for(Warehouse warehouse : WarehouseUtil.warehouses) {
-                    if(product != null && warehouse.hasProduct(product)) {
-                        int cost = order.costTo(warehouse);
-
-                        queue.add(new PotentialDelivery(cost, order, warehouse, product));
-                    }
-                }
+                WarehouseUtil.warehouses.stream()
+                    .filter(warehouse -> product != null && warehouse.hasProduct(product))
+                    .forEach(warehouse -> queue.add(new PotentialDelivery(order.costTo(warehouse), order, warehouse, product)));
             }
         }
 
